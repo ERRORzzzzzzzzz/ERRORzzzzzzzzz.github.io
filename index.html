@@ -284,7 +284,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/06/%E9%81%BF%E5%85%8DReact%E7%BB%84%E4%BB%B6%E7%9A%84%E6%97%A0%E7%94%A8%E6%B8%B2%E6%9F%93/">避免React组件的无用渲染.md</a>
+      <a class="article-title" href="/2020/02/06/%E9%81%BF%E5%85%8DReact%E7%BB%84%E4%BB%B6%E7%9A%84%E6%97%A0%E7%94%A8%E6%B8%B2%E6%9F%93/">避免React组件的无用渲染</a>
     </h1>
   
 
@@ -297,7 +297,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="React中避免无用渲染的方法"><a href="#React中避免无用渲染的方法" class="headerlink" title="React中避免无用渲染的方法"></a>React中避免无用渲染的方法</h2><h3 id="针对类组件"><a href="#针对类组件" class="headerlink" title="针对类组件"></a>针对类组件</h3><h4 id="实现自己的shouldComponentUpdate生命周期函数"><a href="#实现自己的shouldComponentUpdate生命周期函数" class="headerlink" title="实现自己的shouldComponentUpdate生命周期函数"></a>实现自己的shouldComponentUpdate生命周期函数</h4><h4 id="引入了PureComponent组件。React在进行组件更新时，如果发现这个组件是一个PureComponent，它会将组件现在的state和props和其下一个state和props进行浅比较，如果它们的值没有变化，就不会进行更新。要想让你的组件成为Pure-Component，只需要extends-React-PureComponent即可。"><a href="#引入了PureComponent组件。React在进行组件更新时，如果发现这个组件是一个PureComponent，它会将组件现在的state和props和其下一个state和props进行浅比较，如果它们的值没有变化，就不会进行更新。要想让你的组件成为Pure-Component，只需要extends-React-PureComponent即可。" class="headerlink" title="引入了PureComponent组件。React在进行组件更新时，如果发现这个组件是一个PureComponent，它会将组件现在的state和props和其下一个state和props进行浅比较，如果它们的值没有变化，就不会进行更新。要想让你的组件成为Pure Component，只需要extends React.PureComponent即可。"></a>引入了PureComponent组件。React在进行组件更新时，如果发现这个组件是一个PureComponent，它会将组件现在的state和props和其下一个state和props进行浅比较，如果它们的值没有变化，就不会进行更新。要想让你的组件成为Pure Component，只需要extends React.PureComponent即可。</h4><h3 id="针对函数组件"><a href="#针对函数组件" class="headerlink" title="针对函数组件"></a>针对函数组件</h3><blockquote>
+        <h2 id="React中避免无用渲染的方法"><a href="#React中避免无用渲染的方法" class="headerlink" title="React中避免无用渲染的方法"></a>React中避免无用渲染的方法</h2><h3 id="针对类组件"><a href="#针对类组件" class="headerlink" title="针对类组件"></a>针对类组件</h3><ul>
+<li>实现自己的shouldComponentUpdate生命周期函数</li>
+<li>引入了PureComponent组件。React在进行组件更新时，如果发现这个组件是一个PureComponent，它会将组件现在的state和props和其下一个state和props进行浅比较，如果它们的值没有变化，就不会进行更新。要想让你的组件成为Pure Component，只需要extends React.PureComponent即可。</li>
+</ul>
+<h3 id="针对函数组件"><a href="#针对函数组件" class="headerlink" title="针对函数组件"></a>针对函数组件</h3><blockquote>
 <p>对于函数组件，它们没有诸如state的东西去保存它们本地的状态(虽然在React Hooks中函数组件可以使用useState去使用状态), 所以我们不能像在类组件中使用shouldComponentUpdate等生命函数去控制函数组件的重渲染。当然，我们也不能使用extends React.PureComponent了，因为它压根就不是一个类。</p>
 </blockquote>
 <h4 id="使用React-memo-。"><a href="#使用React-memo-。" class="headerlink" title="使用React.memo()。"></a>使用React.memo()。</h4><p>React.memo(…)是React v16.6引进来的新属性。它的作用和React.PureComponent类似，是用来控制函数组件的重新渲染的。React.memo(…) 其实就是函数组件的React.PureComponent。</p>
